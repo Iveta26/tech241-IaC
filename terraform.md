@@ -120,7 +120,7 @@ provider "aws"{
 resource "aws_instance" "app_instance"{
 
 # which machine/OS version etc. AMI-id
-  ami = "ami-0c01dec9ceaa51700"
+  ami = "ami-0c0a51700"
 
 # what type of instance (micro)
   instance_type = "t2.micro"
