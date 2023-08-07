@@ -2,7 +2,7 @@
 
 Kubernetes is an open-source container orchestration system for automating software deployment, scaling, and management. Originally designed by Google, the project is now maintained by the Cloud Native Computing Foundation. The name Kubernetes originates from Greek, meaning 'helmsman' or 'pilot'.
 
-
+---
 ### Who is using it K8?
 
 1. ‍Google‍ - Google has made over 900 thousand contributions to the Kubernetes project, far more than any other company, according to our Kubernetes Statistics. Google also offers the Google Container Engine (GKE) that allows organizations to run Kubernetes on the Google Cloud Platform.
