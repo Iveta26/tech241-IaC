@@ -81,7 +81,6 @@ A Kubernetes object is a "record of intent"--once you create the object, the Kub
 
 To work with Kubernetes objects--whether to create, modify, or delete them--you'll need to use the Kubernetes API. When you use the kubectl command-line interface, for example, the CLI makes the necessary Kubernetes API calls for you. You can also use the Kubernetes API directly in your own programs using one of the Client Libraries.
 
-Object spec and status
 
 
 
