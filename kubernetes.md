@@ -3,7 +3,7 @@
 Kubernetes is an open-source container orchestration system for automating software deployment, scaling, and management. Originally designed by Google, the project is now maintained by the Cloud Native Computing Foundation. The name Kubernetes originates from Greek, meaning 'helmsman' or 'pilot'.
 
 ---
-### Who is using it K8?
+### Who is using K8?
 
 1. ‍Google‍ - Google has made over 900 thousand contributions to the Kubernetes project, far more than any other company, according to our Kubernetes Statistics. Google also offers the Google Container Engine (GKE) that allows organizations to run Kubernetes on the Google Cloud Platform.
 2. Spotify‍ - after using Helios, its in-house container orchestration system for years, Spotify started migrating to Kubernetes in 2018 to take advantage of the growing community and robust feature set.
@@ -97,3 +97,73 @@ Use ```kubectl get service``` to check the connection. If no connection can be m
 3. Check that Kubernetes is available on Docker Desktop ```Settings -> Kubernetes```
 
 ![enable kube](iocImg/eneableKubernetes.jpg)
+
+---
+### Creating cluster
+
+1. Create .yml file for deployment
+
+```
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 3
+
+  template:
+    metadata:
+      labels:
+        app: nginx
+
+    
+    spec:
+     containers:
+     - name: nginx
+       image: tech241iveta/tech241-iveta-first-repo:latest
+       ports:
+       - containerPort: 80
+```
+
+2. Create deplyoment using the .yml file ```kubectl create -f nginx-deploy.yml```
+3. ```kubectl get deploy```
+
+Created cluster, now we need to expose it by creating a service .yml so that we can access it on the web
+
+---
+### Creating service
+ 3 types of services:
+ 1. Cluster IP
+ 2. Node Port
+ 3. Load Balancer
+
+.yml file to ecpose ports
+
+```
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: nginx-svc
+  namespace: default #isolate
+
+spec:
+  ports:
+  - nodePort: 30001 #range is 30000 - 3278
+    port: 80
+    targetPort: 80
+
+
+  selector:
+    app: nginx
+
+  
+  type: NodePort
+```
+More useful commands
+- **Delete pod** ```kubectl delete pod podID```
+- **Get pods** ```kubectl get pods```
